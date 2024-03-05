@@ -1,17 +1,43 @@
 import math
+import random
+import statistics
 
 
-def Distance(vec1, vec2):
+def distance(vec1, vec2):
     return math.sqrt((vec1[0] - vec2[0]) ** 2 + (vec1[1] - vec2[1]) ** 2)
 
 
 def TriangleArea(pA,pB,pC):
-    a = Distance(pB, pC)
-    b = Distance(pA, pC)
-    c = Distance(pA, pB)
+    a = distance(pB, pC)
+    b = distance(pA, pC)
+    c = distance(pA, pB)
     s = (a+b+c)/2
-    factor = int(math.sqrt(s*(s-a)*(s-b)*(s-c)) > 0) # if triangle doesnt exist, the fucntion will return zero
-    return math.sqrt(s*(s-a)*(s-b)*(s-c) * factor)
+
+    return math.sqrt(s*(s-a)*(s-b)*(s-c))
 
 
-print("Area: " + str(TriangleArea([1,4], [3,0], [1,0])))
+def mean(a):
+    sum=0
+    for i in a:
+        sum+=i
+    return sum/len(a)
+
+def median(a):
+    a.sort()
+    return a[len(a)//2]
+
+
+def dev(a):
+    return statistics.stdev(a)
+
+def isValid(p1,p2,p3):
+    side1 = distance(p1, p2)
+    side2 = distance(p2, p3)
+    side3 = distance(p1, p3)
+    s = (side1+side2+side3)/2
+    return s*(s-side1)*(s-side2)*(s-side3)>0
+
+
+def L_range(a):
+    a.sort()
+    return [a[0], a[len(a)-1]]

@@ -48,4 +48,4 @@ def isValid(p1, p2, p3):
 
 def L_range(a):
     a.sort()
-    return [a[0], a[len(a) - 1]]
+    return a[len(a) - 1] - a[0]

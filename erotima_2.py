@@ -1,12 +1,11 @@
 import itertools
 import statistics
-import unittest
-
+from unittest import TestCase
 import utils
 
 
-class Test(unittest.TestCase):
-    def teststats(self):
+class Test(TestCase):
+    def test_stats(self):
         expected_total_triangles = 161673
         expected_arithmetic_mean = 3206.82
         expected_median = 2392.50
